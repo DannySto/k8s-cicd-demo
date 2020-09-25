@@ -5,6 +5,7 @@ locals {
   }
 }
 
+ 
 resource "aws_kms_key" "rs_kms_key" {
   description             = "Used to encrypt S3 remote state bucket"
   deletion_window_in_days = 10
@@ -16,13 +17,11 @@ resource "aws_kms_key" "rs_kms_key" {
     )
   )
 }
+
 resource "aws_kms_alias" "rs_kms_key_alias" {
   name          = "alias/remote_state_s3_key"
   target_key_id = aws_kms_key.rs_kms_key.key_id
 }
-
-
-
 
 resource "aws_s3_bucket" "rs_log" {
   bucket = var.log_bucket_name
@@ -30,7 +29,6 @@ resource "aws_s3_bucket" "rs_log" {
 
   tags = local.common_tags
 }
-
 
 resource "aws_s3_bucket" "rs_state" {
   bucket = var.rs_bucket_name
@@ -51,8 +49,6 @@ resource "aws_s3_bucket" "rs_state" {
 
   tags = local.common_tags
 }
-
-
 
 resource "aws_s3_bucket_public_access_block" "rs_state_block_public" {
   bucket = aws_s3_bucket.rs_state.id

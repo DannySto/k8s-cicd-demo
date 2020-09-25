@@ -1,4 +1,1 @@
-variable "region" {
-  type        = string
-  description = "The region where to deploy terraform"
-}
+/home/ec2-user/environment/k8s-cicd-demo/Terraform/variables/var.tf

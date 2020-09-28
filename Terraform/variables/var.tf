@@ -53,3 +53,5 @@ variable "public_subnets" {
   type        = list(string)
   description = "The public subnets for the VPC"
 }
+
+# EKS variables

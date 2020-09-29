@@ -54,73 +54,17 @@ module "vpc" {
 
 }
 
+# resource "aws_route53_zone" "public" {
+#   name = "alexaki.org"
 
-
-
-# data "aws_availability_zones" "available" {}
-
-
-# resource "aws_vpc" "eks_vpc" {
-#   cidr_block = "10.100.0.0/16"
-
-#   tags = merge(
-#     local.common_tags,
-#     map(
-#     "Name", var.vpc_name,
-#     "kubernetes.io/cluster/${var.eks_name}", "shared",  # Allow Kubernetes Cloud Controller Manager and LB to identify subnets
-#     )
-#   )
-# }
-
-# resource "aws_subnet" "public_subnets" {
-#   count = 3
-
-#   availability_zone       = data.aws_availability_zones.available.names[count.index]
-#   cidr_block              = "10.100.${count.index}.0/24"
-#   map_public_ip_on_launch = true
-#   vpc_id                  = aws_vpc.eks_vpc.id
-
-#   tags = merge(
-#     local.common_tags,
-#     map(
-#     "Name", "${var.project_name}_pub_${count.index}",
-#     "kubernetes.io/cluster/${var.eks_name}", "shared", 
-#     )
-#   )
-# }
-
-# resource "aws_internet_gateway" "vpc_ig" {
-#   vpc_id = aws_vpc.eks_vpc.id
-
-#   tags = merge(
-#     local.common_tags,
-#     map(
-#     "Name", "${var.project_name}_ig",
-#     "kubernetes.io/cluster/${var.eks_name}", "shared", 
-#     )
-#   )
-# }
-
-# resource "aws_route_table" "vpc-ig-rt" {
-#   vpc_id = aws_vpc.eks_vpc.id
-
-#   route {
-#     cidr_block = "0.0.0.0/0"
-#     gateway_id = aws_internet_gateway.vpc_ig.id
+#   vpc {
+#     vpc_id =  module.vpc.vpc_id
+#   }
+#     tags = local.common_tags
 #   }
 
-#   tags = merge(
-#     local.common_tags,
-#     map(
-#     "Name", "${var.project_name}_rt",
-#     "kubernetes.io/cluster/${var.eks_name}", "shared", 
-#     )
-#   )
-# }
+resource "aws_key_pair" "lefteris" {
+  key_name   = "lefteris-key"
+  public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCqLxdoCIibszsQ14whkFIC9OhCdqravjP1t9x5QNJf2mp1mDBkWplfQPXztiRhaDCBHvE6SVK1lZK/HkIVUn015vLVF2fiypFim7OQaJotbu+T1eRnZgY51Vdyur8iikA2dU5cSWa2+hVZ1w/0vodvcJhkvNNT2cz4FxFDQMup2oD9kVayEXkT0vNqhmgjguMAg8KVGeyYdbtouZupsisBHMNbYX5YUv5pCk/lKwT4YPfUPi8k9hzhor4/yauIKrtksES7g7pGPJGVvarAody+fZ8VPHjB/gut3My7jxP7hHaN8DH00mgluZW/ORj65jEpUNRhdOhSe2xHygkyUxyP lefteris"
+}
 
-# resource "aws_route_table_association" "vpc_rt_association" {
-#   count = 3
-
-#   subnet_id      = aws_subnet.public_subnets.*.id[count.index]
-#   route_table_id = aws_route_table.vpc-ig-rt.id
-# }

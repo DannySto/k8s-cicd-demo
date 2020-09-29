@@ -8,23 +8,24 @@ data "terraform_remote_state" "main_vpc" {
   }
 }
 
+data "aws_caller_identity" "current" {}
 
-data "aws_eks_cluster" "cluster" {
-  name = module.eks.cluster_id
-}
-
-data "aws_eks_cluster_auth" "cluster" {
-  name = module.eks.cluster_id
-}
-
-
-
-provider "kubernetes" {
-  host                   = data.aws_eks_cluster.cluster.endpoint
-  cluster_ca_certificate = base64decode(data.aws_eks_cluster.cluster.certificate_authority.0.data)
-  token                  = data.aws_eks_cluster_auth.cluster.token
-  load_config_file       = false
-  version                = "~> 1.9"
+locals {
+  admins = [
+  for admins in var.admins :
+  {
+    userarn  = "arn:aws:iam::${data.aws_caller_identity.current.account_id}:user/${admins}"
+    username = admins
+    groups = ["system:masters"]
+  }]
+  
+ devs = [
+  for devs in var.devs :
+  {
+    userarn  = "arn:aws:iam::${data.aws_caller_identity.current.account_id}:user/${devs}"
+    username = devs
+    groups = ["dev-group"]
+  }]
 }
 
 module "eks" {
@@ -42,4 +43,25 @@ module "eks" {
       asg_desired_capacity = 2
     }
   ]
+
+  map_users = concat(local.admins, local.devs)
+  
+}
+
+
+
+data "aws_eks_cluster" "cluster" {
+  name = module.eks.cluster_id
+}
+
+data "aws_eks_cluster_auth" "cluster" {
+  name = module.eks.cluster_id
+}
+
+provider "kubernetes" {
+  host                   = data.aws_eks_cluster.cluster.endpoint
+  cluster_ca_certificate = base64decode(data.aws_eks_cluster.cluster.certificate_authority.0.data)
+  token                  = data.aws_eks_cluster_auth.cluster.token
+  load_config_file       = false
+  version                = "~> 1.9"
 }

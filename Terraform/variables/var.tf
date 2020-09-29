@@ -55,3 +55,12 @@ variable "public_subnets" {
 }
 
 # EKS variables
+variable "admins" {
+  type        = list(string)
+  description = "List of admin users"
+}
+
+variable "devs" {
+  type        = list(string)
+  description = "List of users belong to dev group"
+}

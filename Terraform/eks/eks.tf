@@ -31,13 +31,15 @@ module "eks" {
   source          = "../modules/eks"
   cluster_name    = var.eks_name
   cluster_version = "1.17"
-  subnets         = var.private_subnets
+  subnets         = data.terraform_remote_state.main_vpc.outputs.private_subnets
   vpc_id          = data.terraform_remote_state.main_vpc.outputs.vpc_id
 
   worker_groups = [
     {
       instance_type = "t3.small"
       asg_max_size  = 2
+      asg_min_size  = 1
+      asg_desired_capacity = 2
     }
   ]
 }

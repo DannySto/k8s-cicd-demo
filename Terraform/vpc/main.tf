@@ -54,15 +54,6 @@ module "vpc" {
 
 }
 
-# resource "aws_route53_zone" "public" {
-#   name = "alexaki.org"
-
-#   vpc {
-#     vpc_id =  module.vpc.vpc_id
-#   }
-#     tags = local.common_tags
-#   }
-
 resource "aws_key_pair" "lefteris" {
   key_name   = "lefteris-key"
   public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCqLxdoCIibszsQ14whkFIC9OhCdqravjP1t9x5QNJf2mp1mDBkWplfQPXztiRhaDCBHvE6SVK1lZK/HkIVUn015vLVF2fiypFim7OQaJotbu+T1eRnZgY51Vdyur8iikA2dU5cSWa2+hVZ1w/0vodvcJhkvNNT2cz4FxFDQMup2oD9kVayEXkT0vNqhmgjguMAg8KVGeyYdbtouZupsisBHMNbYX5YUv5pCk/lKwT4YPfUPi8k9hzhor4/yauIKrtksES7g7pGPJGVvarAody+fZ8VPHjB/gut3My7jxP7hHaN8DH00mgluZW/ORj65jEpUNRhdOhSe2xHygkyUxyP lefteris"

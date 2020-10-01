@@ -1,0 +1,19 @@
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: bootstrap-vs
+spec:
+  hosts:
+  - demo.alexakis.org
+  gateways:
+  - demo-gw
+  http:
+  - route:
+    - destination:
+        host: bootstrap-svc.default.svc.cluster.local
+        subset: v1
+      weight: 90
+    - destination:
+        host: bootstrap-svc.default.svc.cluster.local
+        subset: v2
+      weight: 10

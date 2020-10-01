@@ -1,0 +1,15 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: demo-gw # Individual name (we'll use this later in VirtualServer)
+  namespace: default # Namespace
+spec:
+  selector:
+    istio: ingressgateway # Specify the ingressgateway created for us
+  servers:
+  - port:
+      number: 80 # Service port to watch
+      name: demo-service-port
+      protocol: HTTP
+    hosts:
+    - demo.alexakis.org # Host to watch on, could be "*"

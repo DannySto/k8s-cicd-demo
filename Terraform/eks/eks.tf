@@ -40,15 +40,16 @@ module "eks" {
   ]
 }
 
-
-
-data "aws_eks_cluster" "cluster" {
-  name = module.eks.cluster_id
+resource "null_resource" "istio" {
+  provisioner "local-exec" {
+    command = "istioctl install --set profile=demo"
+  }
+    depends_on = [
+   module.eks,
+  ]
 }
 
-data "aws_eks_cluster_auth" "cluster" {
-  name = module.eks.cluster_id
-}
+
 
 
 

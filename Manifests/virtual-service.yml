@@ -10,10 +10,10 @@ spec:
   http:
   - route:
     - destination:
-        host: speedserver-svc.eks-demo.svc.cluster.local
+        host: demo-svc.eks-demo.svc.cluster.local
         subset: v1
       weight: 90
     - destination:
-        host: speedserver-svc.eks-demo.svc.cluster.local
+        host: demo-svc.eks-demo.svc.cluster.local
         subset: v2
       weight: 10

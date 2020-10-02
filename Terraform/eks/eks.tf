@@ -17,7 +17,6 @@ module "eks" {
   subnets         = data.terraform_remote_state.main_vpc.outputs.private_subnets
   vpc_id          = data.terraform_remote_state.main_vpc.outputs.vpc_id
 
-#  map_users = concat(local.admin_user_map_users, local.developer_user_map_users)
    map_users = [
       {
         userarn = "${data.terraform_remote_state.main_vpc.outputs.eks-admin}"

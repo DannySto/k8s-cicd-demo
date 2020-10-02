@@ -19,7 +19,7 @@ spec:
         version : v2
     spec:
       containers:
-      - image: lalx/speedtest-server:v1
+      - image: lalx/speedtest-server:v2
         name: speedserver
         resources: {}
 status: {}

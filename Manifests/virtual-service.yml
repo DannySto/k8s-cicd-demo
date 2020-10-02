@@ -1,7 +1,7 @@
 apiVersion: networking.istio.io/v1beta1
 kind: VirtualService
 metadata:
-  name: bootstrap-vs
+  name: speedtest-vs
 spec:
   hosts:
   - demo.alexakis.org
@@ -10,10 +10,10 @@ spec:
   http:
   - route:
     - destination:
-        host: bootstrap-svc.eks-demo.svc.cluster.local
+        host: speedserver-svc.eks-demo.svc.cluster.local
         subset: v1
       weight: 90
     - destination:
-        host: bootstrap-svc.eks-demo.svc.cluster.local
+        host: speedserver-svc.eks-demo.svc.cluster.local
         subset: v2
       weight: 10

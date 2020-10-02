@@ -1,7 +1,7 @@
 apiVersion: networking.istio.io/v1alpha3
 kind: DestinationRule
 metadata:
-  name: bootstrap-dr
+  name: speedserver-dr
 spec:
   host: bootstrap-svc.eks-demo.svc.cluster.local
   subsets:

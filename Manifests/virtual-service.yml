@@ -11,9 +11,9 @@ spec:
   - route:
     - destination:
         host: speedserver-svc.eks-demo.svc.cluster.local
-        subset: v1
+        subset: base
       weight: 90
     - destination:
         host: speedserver-svc.eks-demo.svc.cluster.local
-        subset: v2
+        subset: canary
       weight: 10

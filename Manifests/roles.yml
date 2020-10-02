@@ -4,7 +4,7 @@ metadata:
   name: eks-user-group
   namespace: default
 rules:
-- apiGroups: ["", "extensions", "apps"]
+- apiGroups: ["*"]
   resources: ["*"]
   verbs: ["*"]
 

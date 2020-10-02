@@ -25,3 +25,13 @@ resource "aws_iam_role_policy_attachment" "IamRoleManagedPolicyRoleAttachment0" 
   role = aws_iam_role.IamRole.name
   policy_arn = "arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore"
 }
+
+
+
+resource "aws_iam_user" "eks-admin" {
+  name = var.eks-admin
+}
+
+resource "aws_iam_user" "eks-user" {
+  name = var.eks-user
+}

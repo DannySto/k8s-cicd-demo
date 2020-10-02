@@ -17,6 +17,20 @@ module "eks" {
   subnets         = data.terraform_remote_state.main_vpc.outputs.private_subnets
   vpc_id          = data.terraform_remote_state.main_vpc.outputs.vpc_id
 
+#  map_users = concat(local.admin_user_map_users, local.developer_user_map_users)
+   map_users = [
+      {
+        userarn = "${data.terraform_remote_state.main_vpc.outputs.eks-admin}"
+        username = "${var.eks-admin}"
+        groups = ["system:masters"]
+      },
+      {
+        userarn = "${data.terraform_remote_state.main_vpc.outputs.eks-user}"
+        username = "${var.eks-user}"
+        groups = ["eks-user-group"]
+      },
+    ]
+    
   worker_groups = [
     {
       instance_type = "t3.small"
@@ -25,9 +39,9 @@ module "eks" {
       asg_desired_capacity = 2
     }
   ]
-
-
 }
+
+
 
 data "aws_eks_cluster" "cluster" {
   name = module.eks.cluster_id
@@ -44,3 +58,7 @@ provider "kubernetes" {
   load_config_file       = false
   version                = "~> 1.9"
 }
+
+
+
+  

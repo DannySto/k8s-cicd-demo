@@ -8,7 +8,7 @@ data "terraform_remote_state" "main_vpc" {
   }
 }
 
-data "aws_caller_identity" "current" {}
+
 
 module "eks" {
   source          = "../modules/eks"
@@ -40,6 +40,7 @@ module "eks" {
   ]
 }
 
+# install istio
 resource "null_resource" "istio" {
   provisioner "local-exec" {
     command = "istioctl install --set profile=demo"

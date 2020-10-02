@@ -2,7 +2,7 @@ apiVersion: networking.istio.io/v1alpha3
 kind: Gateway
 metadata:
   name: demo-gw # Individual name (we'll use this later in VirtualServer)
-  namespace: default # Namespace
+  namespace: eks-demo #Namespace
 spec:
   selector:
     istio: ingressgateway # Specify the ingressgateway created for us

@@ -3,7 +3,7 @@ kind: DestinationRule
 metadata:
   name: bootstrap-dr
 spec:
-  host: bootstrap-svc.default.svc.cluster.local
+  host: bootstrap-svc.eks-demo.svc.cluster.local
   subsets:
     - labels:
         version: v1

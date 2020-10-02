@@ -10,10 +10,10 @@ spec:
   http:
   - route:
     - destination:
-        host: bootstrap-svc.default.svc.cluster.local
+        host: bootstrap-svc.eks-demo.svc.cluster.local
         subset: v1
       weight: 90
     - destination:
-        host: bootstrap-svc.default.svc.cluster.local
+        host: bootstrap-svc.eks-demo.svc.cluster.local
         subset: v2
       weight: 10

@@ -45,7 +45,7 @@ resource "null_resource" "istio" {
     command = "istioctl install --set profile=demo"
   }
     depends_on = [
-   module.eks,
+    module.eks,
   ]
 }
 

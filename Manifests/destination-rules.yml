@@ -3,7 +3,7 @@ kind: DestinationRule
 metadata:
   name: speedserver-dr
 spec:
-  host: demo-svc.eks-demo.svc.cluster.local
+  host: speedserver-svc.eks-demo.svc.cluster.local
   subsets:
     - labels:
         version: v1

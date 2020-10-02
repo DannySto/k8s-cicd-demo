@@ -2,25 +2,25 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: speedtest
+    app: speedserver
     version : v2
-  name: speedtest-v2
+  name: speedserver-v2
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: speedtest
+      app: speedserver
       version: v2
   strategy: {}
   template:
     metadata:
       labels:
-        app: speedtest
+        app: speedserver
         version : v2
     spec:
       containers:
       - image: lalx/speedtest-server:v1
-        name: speedtest
+        name: speedserver
         resources: {}
 status: {}
 

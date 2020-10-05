@@ -4,6 +4,7 @@ resource "kubernetes_namespace" "demo-ns" {
     name = var.demo-namespace
     labels = {
     env = "demo"
+    istio-injection="enabled"
     }
   }
 
@@ -19,6 +20,7 @@ resource "kubernetes_namespace" "stage-ns" {
     name = var.stage-namespace
     labels = {
      env = "stage"
+     istio-injection="enabled"
     }
   }
 
@@ -27,30 +29,6 @@ resource "kubernetes_namespace" "stage-ns" {
   module.eks,
   ]
 }
-
-# Enable istio by default for the demo namespace
-resource "null_resource" "demo-ns-enable-istio" {
-  provisioner "local-exec" {
-    command = "kubectl label ns ${var.demo-namespace} istio-injection=enabled"
-  }
-    depends_on = [
-   module.eks,
-   kubernetes_namespace.demo-ns,
-  ]
-}
-
-
-# Enable istio by default for the demo namespace
-resource "null_resource" "stage-ns-enable-istio" {
-  provisioner "local-exec" {
-    command = "kubectl label ns ${var.stage-namespace} istio-injection=enabled"
-  }
-    depends_on = [
-   module.eks,
-   kubernetes_namespace.stage-ns,
-  ]
-}
-
 
 # create a role with limited access to the demo namespace
 resource "kubernetes_role" "demo-role" {

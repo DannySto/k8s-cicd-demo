@@ -60,7 +60,23 @@ variable "eks-admin" {
   description = "EKS admin user"
 }
 
-variable "eks-user" {
+variable "demo-user" {
   type        = string
-  description = "EKS limited user"
+  description = "User limited to Demo namespace"
+}
+
+variable "dev-user" {
+  type        = string
+  description = "User limited to staging namespace"
+}
+
+
+variable "demo-namespace" {
+  type        = string
+  description = "Name of the demo namespace"
+}
+
+variable "stage-namespace" {
+  type        = string
+  description = "Name of the staging namespace"
 }

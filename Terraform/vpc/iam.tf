@@ -32,6 +32,10 @@ resource "aws_iam_user" "eks-admin" {
   name = var.eks-admin
 }
 
-resource "aws_iam_user" "eks-user" {
-  name = var.eks-user
+resource "aws_iam_user" "demo-user" {
+  name = var.demo-user
+}
+
+resource "aws_iam_user" "dev-user" {
+  name = var.dev-user
 }

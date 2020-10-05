@@ -19,7 +19,12 @@ output "eks-admin" {
   value       = aws_iam_user.eks-admin.arn
 }
 
-output "eks-user" {
+output "eks-demo-user" {
   description = "ARN of user with limited access to EKS cluster"
-  value       = aws_iam_user.eks-user.arn
+  value       = aws_iam_user.demo-user.arn
+}
+
+output "eks-dev-user" {
+  description = "ARN of user with limited access to EKS cluster"
+  value       = aws_iam_user.dev-user.arn
 }

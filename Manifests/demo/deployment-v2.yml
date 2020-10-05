@@ -5,6 +5,7 @@ metadata:
     app: speedserver
     version : v2
   name: speedserver-v2
+  namespace: eks-demo
 spec:
   replicas: 4
   selector:

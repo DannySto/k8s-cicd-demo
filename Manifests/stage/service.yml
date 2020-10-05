@@ -3,8 +3,8 @@ kind: Service
 metadata:
   labels:
     app: speedserver
-#    version: v1
   name: speedserver-svc
+  namespace: eks-stage
 spec:
   ports:
   - port: 80

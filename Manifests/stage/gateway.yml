@@ -1,15 +1,15 @@
 apiVersion: networking.istio.io/v1alpha3
 kind: Gateway
 metadata:
-  name: demo-gw 
-  namespace: eks-demo
+  name: stage-gw 
+  namespace: eks-stage
 spec:
   selector:
     istio: ingressgateway 
   servers:
   - port:
       number: 80 
-      name: demo-service-port
+      name: stage-service-port
       protocol: HTTP
     hosts:
-    - demo.alexakis.org
+    - stage.alexakis.org

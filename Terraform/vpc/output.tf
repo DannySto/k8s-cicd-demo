@@ -28,3 +28,8 @@ output "eks-dev-user" {
   description = "ARN of user with limited access to EKS cluster"
   value       = aws_iam_user.dev-user.arn
 }
+
+output "ecr-repo-url" {
+  description = "The URL of of the private repository"
+  value       = aws_ecr_repository.demo-repo.repository_url
+}

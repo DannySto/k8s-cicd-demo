@@ -20,7 +20,7 @@ spec:
         version : v2
     spec:
       containers:
-      - image: lalx/speedtest-server:v2
+      - image: 957236318034.dkr.ecr.eu-north-1.amazonaws.com/speedtest-server:v2
         name: speedserver
         resources: {}
 status: {}

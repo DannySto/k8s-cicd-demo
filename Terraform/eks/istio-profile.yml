@@ -208,6 +208,8 @@ spec:
         type: ClusterIP
         zvpn: {}
       istio-ingressgateway:
+        serviceAnnotations:
+          service.beta.kubernetes.io/aws-load-balancer-type: "nlb"
         applicationPorts: ""
         autoscaleEnabled: false
         debug: info

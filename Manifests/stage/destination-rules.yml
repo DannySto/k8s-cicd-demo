@@ -6,10 +6,7 @@ metadata:
 spec:
   host: speedserver-svc.eks-stage.svc.cluster.local
   subsets:
-    # - labels:
-    #     version: v1
-    #   name: base
     - labels:
         version: v2
-      name: canary
+      name: stage
 

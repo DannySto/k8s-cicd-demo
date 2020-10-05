@@ -2,7 +2,11 @@
 resource "kubernetes_namespace" "demo-ns" {
   metadata {
     name = var.demo-namespace
+    labels = {
+    env = "demo"
+    }
   }
+
     
     depends_on = [
   module.eks,
@@ -13,7 +17,11 @@ resource "kubernetes_namespace" "demo-ns" {
 resource "kubernetes_namespace" "stage-ns" {
   metadata {
     name = var.stage-namespace
+    labels = {
+     env = "stage"
+    }
   }
+
     
     depends_on = [
   module.eks,
@@ -49,6 +57,10 @@ resource "kubernetes_role" "demo-role" {
   metadata {
     name = "eks-demo-group"
     namespace = var.demo-namespace
+    labels = {
+    env = "demo"
+    }
+    
   }
 
   rule {
@@ -68,6 +80,9 @@ resource "kubernetes_role_binding" "demo-role-binding" {
   metadata {
     name      = "eks-demo-group-bind"
     namespace =  var.demo-namespace
+    labels = {
+    env = "demo"
+    }
   }
   role_ref {
     api_group = "rbac.authorization.k8s.io"
@@ -93,6 +108,9 @@ resource "kubernetes_role" "stage-role" {
   metadata {
     name = "eks-stage-group"
     namespace = var.stage-namespace
+    labels = {
+    env = "stage"
+    }
   }
 
   rule {
@@ -112,6 +130,9 @@ resource "kubernetes_role_binding" "stage-role-binding" {
   metadata {
     name      = "eks-stage-group-bind"
     namespace =  var.stage-namespace
+    labels = {
+    env = "stage"
+    }
   }
   role_ref {
     api_group = "rbac.authorization.k8s.io"

@@ -9,7 +9,7 @@ spec:
     - labels:
         version: v1
       name: base
-    - labels:
-        version: v2
-      name: canary
+    # - labels:
+    #     version: v2
+    #   name: canary
 

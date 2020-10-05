@@ -10,10 +10,10 @@ spec:
   - stage-gw
   http:
   - route:
-    - destination:
-        host: speedserver-svc.eks-stage.svc.cluster.local
-        subset: base
-      weight: 0
+    # - destination:
+    #     host: speedserver-svc.eks-stage.svc.cluster.local
+    #     subset: base
+    #   weight: 0
     - destination:
         host: speedserver-svc.eks-stage.svc.cluster.local
         subset: canary

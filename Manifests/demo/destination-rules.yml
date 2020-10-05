@@ -2,6 +2,8 @@ apiVersion: networking.istio.io/v1alpha3
 kind: DestinationRule
 metadata:
   name: speedserver-dr
+  labels:
+    env: demo
   namespace: eks-demo
 spec:
   host: speedserver-svc.eks-demo.svc.cluster.local

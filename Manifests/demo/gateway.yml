@@ -3,6 +3,8 @@ kind: Gateway
 metadata:
   name: demo-gw 
   namespace: eks-demo
+  labels:
+    env: demo
 spec:
   selector:
     istio: ingressgateway 

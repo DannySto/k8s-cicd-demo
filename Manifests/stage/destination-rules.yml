@@ -3,6 +3,8 @@ kind: DestinationRule
 metadata:
   name: speedserver-dr
   namespace: eks-stage
+  labels:
+   env: stage
 spec:
   host: speedserver-svc.eks-stage.svc.cluster.local
   subsets:

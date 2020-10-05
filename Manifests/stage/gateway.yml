@@ -3,6 +3,8 @@ kind: Gateway
 metadata:
   name: stage-gw 
   namespace: eks-stage
+  labels:
+   env: stage
 spec:
   selector:
     istio: ingressgateway 

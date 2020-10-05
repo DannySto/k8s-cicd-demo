@@ -3,6 +3,8 @@ kind: VirtualService
 metadata:
   name: speedserver-vs
   namespace: eks-demo
+  labels:
+    env: demo
 spec:
   hosts:
   - demo.alexakis.org

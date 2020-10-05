@@ -3,6 +3,7 @@ kind: Service
 metadata:
   labels:
     app: speedserver
+    end: demo
   name: speedserver-svc
   namespace: eks-demo
 spec:

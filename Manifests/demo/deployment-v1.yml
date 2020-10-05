@@ -3,6 +3,7 @@ kind: Deployment
 metadata:
   labels:
     app: speedserver
+    env: demo
     version : v1
   name: speedserver-v1
   namespace: eks-demo

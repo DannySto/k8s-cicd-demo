@@ -5,9 +5,9 @@ metadata:
   namespace: eks-stage
 spec:
   hosts:
-  - demo.alexakis.org
+  - stage.alexakis.org
   gateways:
-  - demo-gw
+  - stage-gw
   http:
   - route:
     - destination:

@@ -1,0 +1,14 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+  name: speedserver-dr
+spec:
+  host: speedserver-svc.eks-demo.svc.cluster.local
+  subsets:
+    - labels:
+        version: v1
+      name: base
+    - labels:
+        version: v2
+      name: canary
+

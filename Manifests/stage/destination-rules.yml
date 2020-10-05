@@ -4,7 +4,7 @@ metadata:
   name: speedserver-dr
   namespace: eks-stage
 spec:
-  host: speedserver-svc.eks-demo.svc.cluster.local
+  host: speedserver-svc.eks-stage.svc.cluster.local
   subsets:
     - labels:
         version: v1

@@ -21,8 +21,10 @@ spec:
         version : v2
     spec:
       containers:
-      - image: 957236318034.dkr.ecr.eu-north-1.amazonaws.com/speedtest-server:v2
+      - image: lalx/speedtest_server:v2
         name: speedserver
+      imagePullSecrets:
+       - name: dockereg
         resources: {}
 status: {}
 

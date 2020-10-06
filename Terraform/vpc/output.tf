@@ -30,6 +30,16 @@ output "eks-dev-user" {
 }
 
 output "ecr-repo-url" {
-  description = "The URL of of the private repository"
+  description = "The URL of the private repository"
   value       = aws_ecr_repository.demo-repo.repository_url
+}
+
+output "codecommit-clone_url_http" {
+  description = "The HTTP URL to clone the code commit repository "
+  value       = aws_codecommit_repository.speedtest-code-repo.clone_url_http
+}
+
+output "codecommit-clone_url_ssh" {
+  description = "The SSH URL to clone the code commit repository"
+  value       = aws_codecommit_repository.speedtest-code-repo.clone_url_ssh
 }

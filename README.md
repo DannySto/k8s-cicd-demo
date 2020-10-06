@@ -25,12 +25,3 @@ This contains all the required yaml files to deploy in the k8s:
 ## K8S
 
 ![aws](https://github.com/lefterisALEX/k8s-cicd-demo/blob/master/.images/k8s-svc.png?raw=true)
-
-
-## Architecture 
-
-![aws](https://github.com/lefterisALEX/k8s-cicd-demo/blob/master/.images/aws-architecture.png?raw=true)
-
-## K8S
-
-![aws](https://github.com/lefterisALEX/k8s-cicd-demo/blob/master/.images/k8s-svc.png?raw=true)

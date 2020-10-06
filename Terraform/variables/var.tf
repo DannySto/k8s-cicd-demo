@@ -81,12 +81,3 @@ variable "stage-namespace" {
   description = "Name of the staging namespace"
 }
 
-variable "ecr_repo_name" {
-  type        = string
-  description = "The name of the ECR repository"
-}
-
-variable "codecommit_repo_name" {
-  type        = string
-  description = "The name of the codecommit repository"
-}

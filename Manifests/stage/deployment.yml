@@ -21,10 +21,9 @@ spec:
         version : v2
     spec:
       containers:
-      - image: lalx/speedtest_server:v2
+      - image: lalx/speedtest_server:v1.0
         name: speedserver
       imagePullSecrets:
-       - name: dockereg
-        resources: {}
+      - name: dockereg
 status: {}
 

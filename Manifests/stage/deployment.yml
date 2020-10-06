@@ -23,7 +23,5 @@ spec:
       containers:
       - image: lalx/speedtest_server:v2.0
         name: speedserver
-      imagePullSecrets:
-      - name: dockereg
 status: {}
 

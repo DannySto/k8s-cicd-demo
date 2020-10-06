@@ -23,6 +23,5 @@ spec:
       containers:
       - image: lalx/speedtest_server:v1.0
         name: speedserver
-        resources: {}
 status: {}
 

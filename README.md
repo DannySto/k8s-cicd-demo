@@ -1,11 +1,8 @@
 # VPC & EKS deployment using Terraform
 ## Description
 The repository consists of two main directories:
-- Terraform 
-- Manifests
-
-**Terraform:** 
-This Contains all the required terraform files to deploy a new VPC in AWS including:
+#### 1. Terraform
+This contains all the required terraform files to deploy a new VPC in AWS including:
 * Private and Public subnets
 * Internet Gateway
 * NAT gateway

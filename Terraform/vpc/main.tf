@@ -10,8 +10,8 @@ data "aws_availability_zones" "available" {}
 
 
 module "vpc" {
-  source  = "../modules/vpc"
- 
+  source = "../modules/vpc"
+
 
   name = "${var.project_name}_vpc"
   cidr = var.cidr

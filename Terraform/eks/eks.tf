@@ -15,29 +15,29 @@ module "eks" {
   subnets         = data.terraform_remote_state.main_vpc.outputs.private_subnets
   vpc_id          = data.terraform_remote_state.main_vpc.outputs.vpc_id
 
-   map_users = [
-      {
-        userarn = "${data.terraform_remote_state.main_vpc.outputs.eks-admin}"
-        username = "${var.eks-admin}"
-        groups = ["system:masters"]
-      },
-      {
-        userarn = "${data.terraform_remote_state.main_vpc.outputs.eks-demo-user}"
-        username = "${var.demo-user}"
-        groups = ["eks-demo-group"]
-      },
-      {
-        userarn = "${data.terraform_remote_state.main_vpc.outputs.eks-dev-user}"
-        username = "${var.dev-user}"
-        groups = ["eks-dev-group"]
-      },
-    ]
-    
+  map_users = [
+    {
+      userarn  = "${data.terraform_remote_state.main_vpc.outputs.eks-admin}"
+      username = "${var.eks-admin}"
+      groups   = ["system:masters"]
+    },
+    {
+      userarn  = "${data.terraform_remote_state.main_vpc.outputs.eks-demo-user}"
+      username = "${var.demo-user}"
+      groups   = ["eks-demo-group"]
+    },
+    {
+      userarn  = "${data.terraform_remote_state.main_vpc.outputs.eks-dev-user}"
+      username = "${var.dev-user}"
+      groups   = ["eks-dev-group"]
+    },
+  ]
+
   worker_groups = [
     {
-      instance_type = "t3.small"
-      asg_max_size  = 4
-      asg_min_size  = 2
+      instance_type        = "t3.small"
+      asg_max_size         = 4
+      asg_min_size         = 2
       asg_desired_capacity = 3
     }
   ]
@@ -48,7 +48,7 @@ resource "null_resource" "istio" {
   provisioner "local-exec" {
     command = "istioctl install -f ./istio-profile.yml"
   }
-    depends_on = [
+  depends_on = [
     module.eks,
   ]
 }
@@ -59,4 +59,4 @@ resource "null_resource" "istio" {
 
 
 
-  
+

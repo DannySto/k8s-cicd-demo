@@ -1,5 +1,5 @@
 resource "aws_iam_role" "IamRole" {
-  name = "Ec2RoleForSSM"
+  name               = "Ec2RoleForSSM"
   assume_role_policy = <<POLICY
 {
   "Version": "2012-10-17",
@@ -22,7 +22,7 @@ resource "aws_iam_instance_profile" "ec2InstanceProfile" {
   name = "Ec2RoleForSSM"
 }
 resource "aws_iam_role_policy_attachment" "IamRoleManagedPolicyRoleAttachment0" {
-  role = aws_iam_role.IamRole.name
+  role       = aws_iam_role.IamRole.name
   policy_arn = "arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore"
 }
 

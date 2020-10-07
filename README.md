@@ -17,7 +17,7 @@ This contains all the required terraform files to deploy a new VPC and a kuberne
 
 
 
-**Manifests:**
+#### 2. Manifests
 This contains all the required yaml files to deploy in the the kubernetes cluster the followings:
 * istio gateway
 * virtual service & destination rules

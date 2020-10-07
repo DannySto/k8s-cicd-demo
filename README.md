@@ -27,4 +27,4 @@ This contains all the required yaml files to deploy in the the kubernetes cluste
 
 ## K8S
 
-![aws](https://github.com/lefterisALEX/k8s-cicd-demo/blob/master/.images/k8s-svc.png?raw=true)
+![aws](https://github.com/lefterisALEX/k8s-cicd-demo/blob/master/.images/k8s-services.png?raw=true)
